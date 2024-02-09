@@ -1,0 +1,63 @@
+<div class="w-full h-full bg-gradient-to-b from-blueTwo  to-blueOne  px-4 pb-4">
+
+  <div class="w-full grow  px-4 pb-4">
+
+    <div class="flex flex-col h-full">
+      <div  class="flex justify-center">
+        <h2 class="text-2xl text-white my-4">Panel de Asignación</h2>
+      </div>
+
+
+      <div class="flex item-start items-start w-full h-full overflow-x-scroll" cdkDropListGroup>
+
+        <div class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0" *ngFor="let column of columns">
+
+          <div class="flex justify-between py-1">
+            <h3 class="text-sm font-bold ml-2">{{column.title}}</h3>
+          </div>
+          <!-- <div class="border-b-2 {{ column.color }}">{{ column.color }}</div>
+          <hr class="bg-green-600 border-0 dark:bg-gray-700 h-px my-8"> -->
+
+          <div class="text-sm mt-2 min-h-[2.5rem]" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="column.todos">
+            <!-- NgFor -->
+            <div *ngFor="let comentarios of column.todos"
+            cdkDrag
+             class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400">
+              <div class="flow-root">
+                   <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                       <li class="py-0.5 sm:py-0">
+                           <div class="flex items-center">
+                               <div class="flex-shrink-0">
+                                   <img class="w-8 h-8 rounded-full" src="https://api.lorem.space/image/face?w=400&h=400" alt="Neil image">
+                               </div>
+                               <div class="flex-1 min-w-0 ms-4">
+                                   <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                    {{ comentarios.title }}
+                                   </p>
+                                   <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                       emailgmail.com
+                                   </p>
+                               </div>
+                           </div>
+                       </li>
+                   </ul>
+              </div>
+             </div>
+
+          </div>
+        </div>
+
+        <div class="rounded bg-gray-200 w-72 p-2 mr-3">
+          <div>
+            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de la columna</label>
+            <input type="text" [(ngModel)]="nameColumn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre columna" required>
+          </div>
+          <button class="shrink-0" (click)="addColumn()">Agregar Columna</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
